@@ -116,8 +116,7 @@ public class LecturaArchivos extends javax.swing.JFrame {
         int valorElegido = flchUbicarArchivo.showOpenDialog(flchUbicarArchivo);        
         if (valorElegido == JFileChooser.APPROVE_OPTION) { // si selecciono un archivo valido, ejecuta las siguientes lineas
 
-            try { // todo el siguiente codigo dentro de un try catch para capturar errores de apertura                
-                // asigno a la variable la ruta del archivo
+            try { // todo el siguiente codigo dentro de un try catch para capturar errores de apertura   
                 String rutaArchivo = flchUbicarArchivo.getSelectedFile().getAbsolutePath();
                 lblRutaArchivo.setText(rutaArchivo); // al control "label(etiqueta)" le asigno la ruta
                 FileInputStream archivo = new FileInputStream(rutaArchivo); // creo el stream de entrada (parametro el archivo origen)
@@ -130,13 +129,11 @@ public class LecturaArchivos extends javax.swing.JFrame {
                 }
                 txtareaContenidoArchivo.setText(texto); // cuando ya acabo de leer, lo asigno al area de texto
             } catch (IOException e) { // si hay error (no encuentra el archivo, no existe u otro
-                // mensaje indicando el error
                 JOptionPane.showMessageDialog(null, "Error al intentar acceder en el archivo" + e, "Error", JOptionPane.ERROR_MESSAGE);
                 lblRutaArchivo.setText("No existe ese archivo"); // muestro mensaje en la etiqueta donde iria la ruta del archivo
                 txtareaContenidoArchivo.setText(""); // si ya habia informacion en el area de texto, la limpio
             }
         } else { // si selecciono el boton cancelar de la ventana de busqueda
-            // muestro mensaje
             JOptionPane.showMessageDialog(null, "Ha cancelado la carga del archivo", "Cancelado", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCargaArchivoActionPerformed
